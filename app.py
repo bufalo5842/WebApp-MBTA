@@ -4,12 +4,8 @@ from mbta_helper import find_stop_near
 
 app = Flask(__name__)
 
-@app.route("/")
-def index():
-    return render_template("index.html")
 
-
-@app.route("/mbta_helper", methods= ["GET", "POST"]) 
+@app.route("/", methods= ["GET", "POST"]) 
 def nearest():
     """
     Returns nearest MBTA stop and wheelchair accessibility 
@@ -23,8 +19,9 @@ def nearest():
         )
     else:
         return render_template ("index.html", error=True)
-
+        
 
 
 if __name__ == '__main__':
     app.run(debug=True)
+
